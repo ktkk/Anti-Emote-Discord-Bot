@@ -15,15 +15,16 @@ public class GuildMessageReceived extends ListenerAdapter {
     private JDA api;
     private String prefix = "!";
 
-    private int count = 0;
-    private String[] emotes = {"ℹ", "\uD83C\uDDED", "\uD83C\uDFB1", "\uD83C\uDDE9", "\uD83C\uDDEE", "\uD83C\uDDF8"};
-
-    Pattern emotePattern = Pattern.compile(":\\w+:", Pattern.CASE_INSENSITIVE);
-    Pattern susPattern   = Pattern.compile("sus", Pattern.CASE_INSENSITIVE);
-    Pattern bonkPattern  = Pattern.compile(prefix + "bonk", Pattern.CASE_INSENSITIVE);
+    private Pattern emotePattern = Pattern.compile(":\\w+:", Pattern.CASE_INSENSITIVE);
+    private Pattern susPattern   = Pattern.compile("sus", Pattern.CASE_INSENSITIVE);
+    private Pattern bonkPattern  = Pattern.compile(prefix + "bonk", Pattern.CASE_INSENSITIVE);
 
     private Message message;
     private MessageReceivedEvent event;
+
+    private int count = 0;
+    private String[] iHateThisEmotes = {"ℹ", "\uD83C\uDDED", "\uD83C\uDFB1", "\uD83C\uDDE9", "\uD83C\uDDEE", "\uD83C\uDDF8"};
+
 
     public GuildMessageReceived(JDA jda) {
         this.api = jda;
@@ -89,7 +90,7 @@ public class GuildMessageReceived extends ListenerAdapter {
             message.addReaction(":AstraRage:818098186748559390").queue();
 
         if (count % 50 == 0)
-            for (String s : emotes)
+            for (String s : iHateThisEmotes)
                 message.addReaction(s).queue();
 
     }
